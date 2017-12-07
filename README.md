@@ -28,5 +28,5 @@ overwritten
 Example call
 
 ```
-$ bin/moverename.sh from=/home/bizmate/Documents/testFrom/ to=/home/bizmate/Documents/testTo/ pattern=app*
+$ bin/moverename.sh from=/home/bizmate/Documents/testFrom/ to=/home/bizmate/Documents/testTo pattern=app*
 ```

@@ -72,7 +72,7 @@ else
 
 			while [ "$fileExistsWithDifferentSizeVal" = true ]
             do
-				echo "File $matchfile has same size as $TO/$moveToFile"
+				echo "File $matchfile has different size as $TO/$moveToFile"
 				rename "$moveToFile"
 				fileExistsWithDifferentSize "$matchfile" "$TO/$moveToFile"
 				if [ ! -f "$TO/$moveToFile" ]; then
