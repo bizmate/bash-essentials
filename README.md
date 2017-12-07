@@ -16,6 +16,9 @@ CSDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 . "$CSDIR/arg-parser.sh"
 ```
 
+and to get your params just example
+`FROM=$(argValue from)`
+
 ## MoveRename command
 
 Moves files from an old folder to a new one making sure it does not

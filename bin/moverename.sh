@@ -8,7 +8,7 @@ FROM=$(argValue from)
 PATTERN=$(argValue pattern)
 TO=$(argValue to)
 
-#globa evil of bash variables
+#global evil dark lord of bash variables
 fileExistsWithDifferentSizeVal=false
 moveToFile=''
 
@@ -22,10 +22,6 @@ fileExistsWithDifferentSize(){
 		fileExistsWithDifferentSizeVal=false
 	fi
 }
-
-#fileExistsWithDifferentSize /home/bizmate/Documents/testFrom/application201707040000.log /home/bizmate/Documents/testTo/application201707040000.log
-
-#exit 1;
 
 rename(){
 	moveToFile=$(echo "$1" | sed 's/\./_./')
@@ -58,17 +54,9 @@ else
 			mv "$matchfile" "$TO/$moveToFile"
 		else
 			# https://stackoverflow.com/questions/23331864/check-if-two-files-are-different-sizes-in-bash
-			#if [ $(stat -c %s ${file}) -ne $(stat -c %s "$TO/$moveToFile") ]; then
-               # echo"They're different."
-
-            #fi
 			echo "${moveToFile} exists"
-			#rename $moveToFile
-			#echo "new move to file name $moveToFile"
 
 			fileExistsWithDifferentSize "$matchfile" "$TO/$moveToFile"
-
-			echo "$fileExistsWithDifferentSizeVal <-"
 
 			while [ "$fileExistsWithDifferentSizeVal" = true ]
             do
