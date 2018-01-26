@@ -33,3 +33,14 @@ Example call
 ```
 $ bin/moverename.sh from=/home/bizmate/Documents/testFrom/ to=/home/bizmate/Documents/testTo pattern=app*
 ```
+
+## Wait for Docker Compose
+
+When using docker compose in detached mode it might take sometime before 
+the state of a container is ready to perform the full operations it is 
+required for. For instance apache takes sometime to start and be
+available on a port, the same if you are doing some file packing in the
+container when running a build, for instance `composer install`
+
+Example on how to leverage this script
+./bin/wait_for_docker.bash "ready to handle connections"
