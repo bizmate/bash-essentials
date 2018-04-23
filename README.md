@@ -44,3 +44,10 @@ container when running a build, for instance `composer install`
 
 Example on how to leverage this script
 ./bin/wait_for_docker.bash "ready to handle connections"
+
+## Remote db file restore
+
+Example 
+```
+DB_USER=1  DB_PASS=1  DB_NAME=1  DB_HOST=1 FILE_NAME=mydb.sql.gz BASE_URL=https://s3-eu-west-1.amazonaws.com/..../database-dumps/ bin/s3_db_restore.sh
+```
