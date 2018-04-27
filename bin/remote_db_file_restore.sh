@@ -4,8 +4,8 @@ set -x
 
 if [ -z "$DB_USER" ] || [ -z "$DB_PASS"  ] || [ -z "$DB_NAME"  ] || [ -z "$DB_HOST"  ] || [ -z "$FILE_NAME"  ] || [ -z "$BASE_URL"  ]
 then
-	echo please call the script with compulsory env vars DB_USER, DB_PASS, DB_NAME, DB_HOST
-	echo example  "DB_USER=$DB_USER  DB_PASS=$DB_PASS  DB_NAME=$DB_NAME  DB_HOST=$DB_HOST FILE_NAME=$FILE_NAME BASE_URL=url s3_db_restore.sh"
+	echo please call the script with compulsory env vars DB_USER, DB_PASS, DB_NAME, DB_HOST, FILE_NAME, BASE_URL
+	echo "example  DB_USER=$DB_USER  DB_PASS=$DB_PASS  DB_NAME=$DB_NAME  DB_HOST=$DB_HOST FILE_NAME=$FILE_NAME BASE_URL=$BASE_URL remote_db_file_restore.sh"
 	exit 1
 fi
 
