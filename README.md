@@ -22,10 +22,10 @@ and to get your params just example
 ## MoveRename command
 
 Moves files from an old folder to a new one making sure it does not
-overwrite files with the same size and instead it adds a prefix 
+overwrite files with the same size and instead it adds a prefix
 underscore to the new file when moved.
 
-Aimed at moving log files to a new folder making sure no file is 
+Aimed at moving log files to a new folder making sure no file is
 overwritten
 
 Example call
@@ -36,8 +36,8 @@ $ bin/moverename.sh from=/home/bizmate/Documents/testFrom/ to=/home/bizmate/Docu
 
 ## Wait for Docker Compose
 
-When using docker compose in detached mode it might take sometime before 
-the state of a container is ready to perform the full operations it is 
+When using docker compose in detached mode it might take sometime before
+the state of a container is ready to perform the full operations it is
 required for. For instance apache takes sometime to start and be
 available on a port, the same if you are doing some file packing in the
 container when running a build, for instance `composer install`
@@ -45,6 +45,6 @@ container when running a build, for instance `composer install`
 Example on how to leverage this script
 ./bin/wait_for_docker.bash "ready to handle connections"
 
-## [Remote db file restore](../docs/REMOTE_DB_FILE_RESTORE.md)
-## [Bash Docker](../docs/BASH_DOCKER.md)
-## [Environment Replacement](../docs/ENV_REPLACE.md)
+## [Remote db file restore](/docs/REMOTE_DB_FILE_RESTORE.md)
+## [Bash Docker](/docs/BASH_DOCKER.md)
+## [Environment Replacement](/docs/ENV_REPLACE.md)
