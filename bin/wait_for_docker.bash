@@ -2,12 +2,12 @@
 
 waitForDocker () {
     # wait until we see the required logs
-    WAIT_LOG=("$1")
+    WAIT_LOG=$1
 
-    MAX_ATTEMPTS=150
+    MAX_ATTEMPTS=2
     ATTEMPTS=0
     while [ $ATTEMPTS -le $MAX_ATTEMPTS ]; do
-        ATTEMPTS=$(( $ATTEMPTS + 1 ))
+        ATTEMPTS=$(( ATTEMPTS + 1 ))
 
         echo "Waiting for container log FRASE $WAIT_LOG - (attempt: $ATTEMPTS)..."
         DOCKER_LOGS=$(docker-compose logs )
@@ -20,11 +20,11 @@ waitForDocker () {
         sleep 2
     done
 
-    grep -q "$WAIT_LOG" <<< "$DOCKER_LOGS"
-    if [[ $? -ne 0 ]] ; then
+    # https://github.com/koalaman/shellcheck/wiki/SC2181
+    if ! grep -q "$WAIT_LOG" <<< "$DOCKER_LOGS" ; then
       echo "Containers are not ready, tests will not run!"
       exit 1
     fi
 }
 
-waitForDocker $*
+waitForDocker "$@"
