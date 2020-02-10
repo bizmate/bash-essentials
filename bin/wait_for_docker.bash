@@ -4,7 +4,7 @@ waitForDocker () {
     # wait until we see the required logs
     WAIT_LOG=$1
 
-    MAX_ATTEMPTS=2
+    MAX_ATTEMPTS=150
     ATTEMPTS=0
     while [ $ATTEMPTS -le $MAX_ATTEMPTS ]; do
         ATTEMPTS=$(( ATTEMPTS + 1 ))
