@@ -45,6 +45,18 @@ container when running a build, for instance `composer install`
 Example on how to leverage this script
 ./bin/wait_for_docker.bash "ready to handle connections"
 
+## Docker Compose check for X amount of 0 exited processes
+When spinning docker compose the repo includes a script to check logs for a sentence
+to confirm that the application is up.
+This is used to exit the script if the for some reason we see less the the expected amount
+ of docker containers that exited with a non 0 exit code.
+ 
+For instance if using composer and another script you would expect its container to exit 
+with code 0. As they are two containers you can call the script such as
+
+`bin/docker-compose-exit-check.sh 2`
+
+
 ## [Remote db file restore](/docs/REMOTE_DB_FILE_RESTORE.md)
 ## [Bash Docker](/docs/BASH_DOCKER.md)
 ## [Environment Replacement](/docs/ENV_REPLACE.md)
