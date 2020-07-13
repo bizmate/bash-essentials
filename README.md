@@ -56,6 +56,12 @@ with code 0. As they are two containers you can call the script such as
 
 `bin/docker-compose-exit-check.sh 2`
 
+## Docker Compose sample command to register Gitlab runners to projects
+
+It expects to be run on a docker host where the `gitlab-runner` is runnig from docker-compose.
+
+`docker-compose-register-gitlab-runner.sh token1,token2`
+
 
 ## [Remote db file restore](/docs/REMOTE_DB_FILE_RESTORE.md)
 ## [Bash Docker](/docs/BASH_DOCKER.md)
