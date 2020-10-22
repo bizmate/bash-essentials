@@ -67,3 +67,4 @@ It expects to be run on a docker host where the `gitlab-runner` is runnig from d
 ## [Bash Docker](/docs/BASH_DOCKER.md)
 ## [Environment Replacement](/docs/ENV_REPLACE.md)
 ## [Optimise web images](/docs/OPTIMISE_FOR_WEB.md)
+## [Detect and trash images without persons](/docs/DARKNET_DETECT_AND_TRASH.md)

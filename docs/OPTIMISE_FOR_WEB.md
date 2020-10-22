@@ -12,4 +12,9 @@ depends on arg-parser.sh included in this repo.
 It will find all jpg files and convert/optimise them to a compression and format that looks lossless to the
 common human eye.
 
+### Notes
+- https://developers.google.com/speed/webp/docs/cwebp
+- https://web.dev/uses-webp-images/?utm_source=lighthouse&utm_medium=unknown
+- https://web.dev/codelab-serve-images-webp/
+
 [Go Back](../README.md)
