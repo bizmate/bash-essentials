@@ -18,8 +18,7 @@ then
 	exit 1
 fi
 #constants
-#videoAndImageFiles='.*\.\(jpg\|mp4\)'
-videoAndImageFiles='.*\.\(iogjdfoigjosdifjgosijfg\|mp4\)'
+videoAndImageFiles='.*\.\(jpg\|mp4\)'
 requiredCommand=docker
 
 if ! command -v $requiredCommand &> /dev/null
@@ -44,12 +43,25 @@ checkAndTrash() {
 	# filename="${1%.*}"
 	echo "checking file $1 with extension $extension under folder $mediaFolder"
 
-	if [ "$extension" == 'jpg' ]
+	if [[ -f "$1.log" ]]
+	then
+		fpsCount=$(grep -c FPS "$1.log")
+
+		echo "FPS Count $fpsCount"
+		if [[ "$fpsCount" -gt "0" ]];
+		then
+			echo "$1 was already checked, returning 0"
+			return 0
+		else
+			echo "$1 was not checked"
+		fi
+	fi
+
+	if [[ "$extension" == 'jpg' ]]
 	then
 		docker run --gpus all --rm -v "$DARKNET_WORKSPACE_FOLDER":/workspace -v "$YOLO_LIB_FOLDER":/yolo-lib \
 		-v "$mediaFolder":/images -w /workspace daisukekobayashi/darknet:gpu-cv darknet detector test data/coco.data \
-		/yolo-lib/yolov3.cfg /yolo-lib/yolov3.weights  "/images/$1" -dont_show -ext_output | awk '/Objects:/,/FPS/' \
-		> "$1.log"
+		/yolo-lib/yolov3.cfg /yolo-lib/yolov3.weights  "/images/$1" -dont_show -ext_output > "$1.log"
 	else
 		docker run --gpus all --rm -v "$DARKNET_WORKSPACE_FOLDER":/workspace -v "$YOLO_LIB_FOLDER":/yolo-lib \
 		-v "$mediaFolder":/images -w /workspace daisukekobayashi/darknet:gpu-cv darknet detector demo data/coco.data \
