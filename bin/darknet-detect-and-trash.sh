@@ -43,7 +43,7 @@ checkAndTrash() {
 	# filename="${1%.*}"
 	echo "checking file $1 with extension $extension under folder $mediaFolder"
 
-	if [[ -s diff.txt ]];
+	if [[ -s $mediaFolder/$1 ]];
 	then
 		echo "file has something";
 	else
