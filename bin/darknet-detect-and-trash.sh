@@ -43,6 +43,16 @@ checkAndTrash() {
 	# filename="${1%.*}"
 	echo "checking file $1 with extension $extension under folder $mediaFolder"
 
+	if [[ -s diff.txt ]];
+	then
+		echo "file has something";
+	else
+		echo "$1 is empty, deleting and  returning 0"
+		gvfs-trash "$mediaFolder/$1"
+		return 0
+	fi
+
+
 	if [[ -f "$1.log" ]]
 	then
 		fpsCount=$(grep -c FPS "$1.log")
@@ -71,9 +81,15 @@ checkAndTrash() {
 
 	if [[ -s "$1.log" ]]
 	then
-		echo "good detection for file $1.log"
-		personCount=$(grep -c person "$1.log")
+		if [[ $extension == "jpg" ]]  ; then checkString="Predicted"; else checkString="FPS"; fi
+		checkCount=$(grep -c $checkString "$1.log")
 
+		if [[ "$checkCount" -eq "0" ]];
+		then
+			echo "broken detection for file $1.log"
+		fi
+
+		personCount=$(grep -c person "$1.log")
 		if [[ "$personCount" -eq "0" ]];
 		then
 		   echo "moving $mediaFolder/$1 to trash";
