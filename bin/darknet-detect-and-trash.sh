@@ -81,6 +81,11 @@ checkAndTrash() {
 		> "$1.log"
 	fi
 
+#	if [[ $? != 124 ]]
+#	then
+#		echo "exited with $?" > "$1.timeoutError.log"
+#	fi
+
 	if [[ -s "$1.log" ]]
 	then
 		if [[ $extension == "jpg" ]]  ; then checkString="Predicted"; else checkString="FPS"; fi
@@ -104,4 +109,4 @@ checkAndTrash() {
 
 export -f checkAndTrash
 
-find "$mediaFolder" -type f -regex "$videoAndImageFiles" -exec bash -c 'checkAndTrash "$0"' {} \;
+find "$mediaFolder" -type f -regex "$videoAndImageFiles" -exec timeout 300 bash -c 'checkAndTrash "$0"' {} \;
