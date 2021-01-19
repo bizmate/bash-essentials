@@ -75,3 +75,7 @@ DB_USER=root  DB_PASS=qwerty  DB_NAME=wordpress  DB_HOST=127.0.0.1 DB_PORT=3307 
 ## [Environment Replacement](/docs/ENV_REPLACE.md)
 ## [Optimise web images](/docs/OPTIMISE_FOR_WEB.md)
 ## [Detect and trash images without persons](/docs/DARKNET_DETECT_AND_TRASH.md)
+
+# Build Status
+
+[![Build Status](https://travis-ci.com/bizmate/bash-essentials.svg?branch=master)](https://travis-ci.com/bizmate/bash-essentials)

@@ -1,3 +1,5 @@
+#https://www.sysorchestra.com/introduction-on-how-to-use-shellcheck-and-bashate-with-travis-ci/
+
 sudo: required
 dist: trusty
 language: bash
