@@ -23,17 +23,17 @@ tables=$1
 if [ -z "${tables}" ]
 then
 	echo importing
-	if [[ -f "$FILE_PATH" ]]
+	if [[ ! -f "$PWD/$FILE_PATH" ]]
 	then
-		echo "File $FILE_PATH not found for import"
+		echo "File $PWD/$FILE_PATH not found for import"
 		exit 1
 	fi
 	# running import
-    mysql -h "$DB_HOST -u $DB_USER -p$DB_PASS -P $DB_PORT $DB_NAME < $FILE_PATH"
+    mysql -h "$DB_HOST" -u "$DB_USER" "-p$DB_PASS" -P "$DB_PORT" "$DB_NAME" < "$PWD/$FILE_PATH"
 else
 	echo exporting "$tables"
 	# running export
 	# https://dba.stackexchange.com/questions/9306/how-do-you-mysqldump-specific-tables
-	read -ra tables_arr <<<"$tables"; declare -p tables_arr
-	mysqldump --single-transaction --host="$DB_HOST" --user="$DB_USER" --password="$DB_PASS" --port="$DB_PORT" "$DB_NAME" "$tables_arr" > "$FILE_PATH"
+	# shellcheck disable=SC2086
+	mysqldump --single-transaction --host="$DB_HOST" --user="$DB_USER" --password="$DB_PASS" --port="$DB_PORT" "$DB_NAME" $tables > "$FILE_PATH"
 fi
