@@ -34,5 +34,6 @@ else
 	echo exporting "$tables"
 	# running export
 	# https://dba.stackexchange.com/questions/9306/how-do-you-mysqldump-specific-tables
-	mysqldump --single-transaction --host="$DB_HOST" --user="$DB_USER" --password="$DB_PASS" --port="$DB_PORT" "$DB_NAME" $tables > "$FILE_PATH"
+	read -ra tables_arr <<<"$tables"; declare -p tables_arr
+	mysqldump --single-transaction --host="$DB_HOST" --user="$DB_USER" --password="$DB_PASS" --port="$DB_PORT" "$DB_NAME" "$tables_arr" > "$FILE_PATH"
 fi

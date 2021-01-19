@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 global_args=("$@");
 function argValue {
-    for word in ${global_args[@]}
+    for word in "${global_args[@]}"
     do
         arrIN=(${word//=/ })
         if [ "$1" == "${arrIN[0]}" ]

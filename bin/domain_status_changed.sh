@@ -17,7 +17,7 @@ for ((i=0; i<HOW_MANY_TIMES_RUNS; i++))
 do
 	echo "Running $i of $HOW_MANY_TIMES_RUNS"
 	date
-	DOMAIN_STATUS_CHANGED="$( ./domain-check-2.sh -f ~/domains-check-list.txt | grep -v 'Expired\|Status\|-----------------------' )" && [ -n "$DOMAIN_STATUS_CHANGED" ] && echo "$DOMAIN_STATUS_CHANGED" | mailx -v -s "Domain_check_email-Bizmate" $DOMAIN_SEND_TO_EMAIL
+	DOMAIN_STATUS_CHANGED="$( ./domain-check-2.sh -f ~/domains-check-list.txt | grep -v 'Expired\|Status\|-----------------------' )" && [ -n "$DOMAIN_STATUS_CHANGED" ] && echo "$DOMAIN_STATUS_CHANGED" | mailx -v -s "Domain_check_email-Bizmate" "$DOMAIN_SEND_TO_EMAIL"
 	sleep $SLEEP_INTERVAL
 done
 

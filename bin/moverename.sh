@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC1090
+# shellcheck disable=SC2001
+# shellcheck disable=SC2006
+
 ## moves files from one folder to another one, renaming a file if it has the same name and different size
 CSDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 #include arg parser - fetch args with function argValue

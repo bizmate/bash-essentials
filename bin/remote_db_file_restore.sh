@@ -20,6 +20,6 @@ if [[ $FILE_NAME = *".gz" ]]; then
 	echo "Gunzipped into $FILE_NAME"
 fi
 
-mysql -h $DB_HOST -u $DB_USER -p$DB_PASS $DB_NAME < $FILE_NAME
+mysql -h "$DB_HOST -u $DB_USER -p$DB_PASS $DB_NAME" < "$FILE_NAME"
 
-rm $FILE_NAME
+rm "$FILE_NAME"

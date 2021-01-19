@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC1090
+# shellcheck disable=SC2016
 
 # export DARKNET_WORKSPACE_FOLDER=/home/bizmate/Documents/siti-web/darknet-ab/build/darknet/x64
 # export YOLO_LIB_FOLDER=/home/bizmate/Documents/siti-web/yolo-lib
