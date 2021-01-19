@@ -66,7 +66,7 @@ It expects to be run on a docker host where the `gitlab-runner` is runnig from d
 Can be used to import and export specific tables from a db. Example:
 
 ```
-DB_USER=root  DB_PASS=qwerty  DB_NAME=wordpress  DB_HOST=127.0.0.1 DB_PORT=3307 FILE_PATH="fixtures/file.sql" bin/selected-tables-import-export.sh tables="wp_ad2kb8_sib_model_forms wp_ad2kb8_sib_model_users"
+DB_USER=root  DB_PASS=qwerty  DB_NAME=wordpress  DB_HOST=127.0.0.1 DB_PORT=3307 FILE_PATH="fixtures/file.sql" bin/selected-tables-import-export.sh "wp_ad2kb8_sib_model_forms wp_ad2kb8_sib_model_users"
 ```
 
 
