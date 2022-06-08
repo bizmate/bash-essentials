@@ -75,11 +75,25 @@ checkAndTrash() {
 		docker run --gpus all --rm -v "$DARKNET_WORKSPACE_FOLDER":/workspace -v "$YOLO_LIB_FOLDER":/yolo-lib \
 		-v "$filePath":/images -w /workspace daisukekobayashi/darknet:gpu-cv darknet detector test data/coco.data \
 		/yolo-lib/yolov3.cfg /yolo-lib/yolov3.weights  "/images/$fileName" -dont_show -ext_output > "$1.log"
+
+		RESULT=$?
+		if [ $RESULT -eq 0 ]; then
+      echo success >> "$1.log"
+    else
+      echo "Failed executing command $RESULT" >> "$1.log"
+    fi
 	else
 		docker run --gpus all --rm -v "$DARKNET_WORKSPACE_FOLDER":/workspace -v "$YOLO_LIB_FOLDER":/yolo-lib \
 		-v "$filePath":/images -w /workspace daisukekobayashi/darknet:gpu-cv darknet detector demo data/coco.data \
 		/yolo-lib/yolov3.cfg /yolo-lib/yolov3.weights  "/images/$fileName" -dont_show -ext_output | awk '/Objects:/,/FPS/' \
 		> "$1.log"
+
+		RESULT=$?
+    if [ $RESULT -eq 0 ]; then
+      echo success >> "$1.log"
+    else
+      echo "Failed executing command $RESULT" >> "$1.log"
+    fi
 	fi
 
 #	if [[ $? != 124 ]]

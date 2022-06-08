@@ -19,11 +19,11 @@ Pattern=$(argValue pattern)
 
 if [ "${#Pattern}" == "0" ]
 then
-    Pattern="*.jpg"
+    Pattern="*.png"
 fi
 
 find . -type f -name "$Pattern" ! -name "*_optimised.jpg" -execdir sh -c \
-	'convert "$1" -sampling-factor 4:2:0 -strip -quality 80 -interlace JPEG -colorspace sRGB "${1%.jpg}_optimised.jpg"' _ {} \;
+	'convert "$1" -strip -colorspace sRGB "${1%.png}_optimised.png"' _ {} \;
 
 #todo $ convert Slider1.png -strip Slider1_optimised.png
 #todo checkout https://web.dev/uses-responsive-images/?utm_source=lighthouse&utm_medium=unknown

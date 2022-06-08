@@ -14,8 +14,8 @@ Script using darknet inside docker to delete videos or images without person ent
 - darknet build folder is used within docker, export the required variable after running make inside [darknet](https://github.com/AlexeyAB/darknet)
 
 ```
-export DARKNET_WORKSPACE_FOLDER=/home/user/Documents/sites/darknet-ab/build/darknet/x64
-export YOLO_LIB_FOLDER=/home/user/Documents/sitis/yolo-lib
+export DARKNET_WORKSPACE_FOLDER="$HOME/Documents/sites/darknet-ab/build/darknet/x64"
+export YOLO_LIB_FOLDER="$HOME/Documents/sitis/yolo-lib"
 ```
 
 To download yolo get the links from the [darknet readme](https://github.com/AlexeyAB/darknet/blob/master/README.md)
@@ -24,7 +24,7 @@ please install darknet as it will create the build folder and all necessary file
 
 ## Run command
 
-`bin/darknet-detect-and-delete.sh mediaFolder=/path/to/files`
+`bin/darknet-detect-and-trash.sh mediaFolder=/path/to/files`
 
 It will find all jpg and mp4 files, only these types are being scanned at the moment.
 Argument is optional, if omitted it will use current working folder.
