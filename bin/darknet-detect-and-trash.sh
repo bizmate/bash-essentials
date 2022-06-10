@@ -48,7 +48,13 @@ checkAndTrash() {
 
 	if [[ -s $filePath/$fileName ]];
 	then
-		echo "file has something";
+		fileSize="$(wc -c "$filePath/$fileName" | awk '{print $1}')"
+		echo "file has something fileSize: $fileSize";
+    if [[ "$fileSize" -lt 500000 ]]  && [[ "$extension" == 'mp4' ]]; then
+      echo "PARTIAL Video file $filePath/$fileName is too small. Might be partial. Deleting"
+      gvfs-trash "$filePath/$fileName"
+      return 0
+    fi
 	else
 		echo "$fileName is empty, deleting and  returning 0"
 		gvfs-trash "$filePath/$fileName"
@@ -58,7 +64,7 @@ checkAndTrash() {
 
 	if [[ -f "$1.log" ]]
 	then
-		fpsCount=$(grep -c FPS "$1.log")
+		fpsCount=$(grep -c -e 'Predicted' -e 'FPS' "$1.log")
 
 		echo "FPS Count $fpsCount"
 		if [[ "$fpsCount" -gt "0" ]];
