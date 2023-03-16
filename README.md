@@ -1,6 +1,6 @@
-# bash essentials
-a container for generic bash scripts to be included in other projects
-as a generic distributable bare list of libraries.  
+# Bash Essentials
+A repository for generic bash scripts to be included in other projectsas a generic distributable bare list of libraries.
+Please read the [License](./LICENSE.md) before using.
 
 TODO: look into https://github.com/bpkg/bpkg
 
@@ -16,7 +16,7 @@ CSDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 . "$CSDIR/arg-parser.sh"
 ```
 
-and to get your params just example
+and to get your params just add the following if you parameter name is `from`
 `FROM=$(argValue from)`
 
 ## MoveRename command
@@ -46,10 +46,10 @@ Example on how to leverage this script
 ./bin/wait_for_docker.bash "ready to handle connections"
 
 ## Docker Compose check for X amount of 0 exited processes
-When spinning docker compose the repo includes a script to check logs for a sentence
-to confirm that the application is up.
-This is used to exit the script if the for some reason we see less the the expected amount
- of docker containers that exited with a non 0 exit code.
+When running docker-compose up in detached mode the processes/containers might not be ready or might fail after sometime
+from the up sequence. 
+This script checks 20 times with 2 seconds intervals, so up to approximately 40 seconds, how many docker containers 
+exited with a 0 exit code.
  
 For instance if using composer and another script you would expect its container to exit 
 with code 0. As they are two containers you can call the script such as
@@ -76,6 +76,7 @@ DB_USER=root  DB_PASS=qwerty  DB_NAME=wordpress  DB_HOST=127.0.0.1 DB_PORT=3307 
 ## [Optimise web images](/docs/OPTIMISE_FOR_WEB.md)
 ## [Detect and trash images without persons](/docs/DARKNET_DETECT_AND_TRASH.md)
 ## [Generate SSH key for Github using Docker](/docs/SSH_KEYGEN_GITHUB_DOCKER.md)
+## [Rename Files with Specific Dates](/docs/FILE_WITH_DATES_RENAME.md)
 
 # Build Status
 

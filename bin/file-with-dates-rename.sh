@@ -41,4 +41,3 @@ replaceFilename() {
 export -f replaceFilename
 
 find . -maxdepth 1 -name "$filePrefix*" -type f -exec timeout 300 bash -c 'replaceFilename "$0"' {} \;
-echo "fucking rename $rename"
