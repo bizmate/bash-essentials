@@ -77,6 +77,7 @@ DB_USER=root  DB_PASS=qwerty  DB_NAME=wordpress  DB_HOST=127.0.0.1 DB_PORT=3307 
 ## [Detect and trash images without persons](/docs/DARKNET_DETECT_AND_TRASH.md)
 ## [Generate SSH key for Github using Docker](/docs/SSH_KEYGEN_GITHUB_DOCKER.md)
 ## [Rename Files with Specific Dates](/docs/FILE_WITH_DATES_RENAME.md)
+## [Natwest bank statements naming script](/docs/NATWEST_STATEMENT_RENAME.md)
 
 # Build Status
 
