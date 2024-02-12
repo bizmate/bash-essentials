@@ -19,6 +19,13 @@ then
 	BASE_PATH="$HOME/db_backup/"
 fi
 
+if [ -n "$NO_TABLESPACES" ]
+then
+  # see https://dba.stackexchange.com/questions/271981/access-denied-you-need-at-least-one-of-the-process-privileges-for-this-ope
+	echo "Adding NO_TABLESPACES_OPTION in the mysqldump transaction"
+	NO_TABLESPACES_OPTION="--no-tablespaces"
+fi
+
 DATE_TIME=$(date +%Y-%m-%d_%H-%M)
 DEST_FILE="${BASE_PATH}${FILE_NAME}_backup_${DATE_TIME}.sql"
 
@@ -29,7 +36,7 @@ mkdir -p "$BASE_PATH"
 cd "$BASE_PATH" || exit 1
 echo "Command : mysqldump --host=$DB_HOST --user=$DB_USER --password=.... $DB_NAME > $DEST_FILE"
 ### mysqldump
-mysqldump --single-transaction --host="$DB_HOST" --user="$DB_USER" --password="$DB_PASS" "$DB_NAME" > "$DEST_FILE"
+mysqldump --single-transaction "$NO_TABLESPACES_OPTION" --host="$DB_HOST" --user="$DB_USER" --password="$DB_PASS" "$DB_NAME" > "$DEST_FILE"
 if [ -f "$DEST_FILE" ]; then
 	gzip "$DEST_FILE"
 fi
