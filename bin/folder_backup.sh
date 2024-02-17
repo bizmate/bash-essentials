@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 echo Running Backup
+set -e
 if [ -z "$SOURCE_FOLDER" ]
 then
 	echo please call the script with compulsory env var SOURCE_FOLDER
@@ -18,6 +19,8 @@ then
 	echo using default DESTINATION_FOLDER. Use DESTINATION_FOLDER env if you want to store in another folder.
 	DESTINATION_FOLDER=./sites_backup
 fi
+
+mkdir -p $DESTINATION_FOLDER
 
 source=$SOURCE_FOLDER
 date_time=$(date +%Y-%m-%d_%H-%M)
