@@ -20,11 +20,11 @@ then
 	DESTINATION_FOLDER=./sites_backup
 fi
 
-mkdir -p $DESTINATION_FOLDER
+mkdir -p "$DESTINATION_FOLDER"
 
 source=$SOURCE_FOLDER
 date_time=$(date +%Y-%m-%d_%H-%M)
-dest=$DESTINATION_FOLDER/$BACKUP_NAME_$date_time.tgz
+dest=$DESTINATION_FOLDER/"$BACKUP_NAME"_$date_time.tgz
 
 ### TAR
 /usr/bin/tar -czvf "$dest" "$source"
