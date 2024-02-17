@@ -71,6 +71,7 @@ DB_USER=root  DB_PASS=qwerty  DB_NAME=wordpress  DB_HOST=127.0.0.1 DB_PORT=3307 
 
 
 ## [Remote db file restore](/docs/REMOTE_DB_FILE_RESTORE.md)
+## [Folder Backup](/docs/FOLDER_BACKUP.md)
 ## [Bash Docker](/docs/BASH_DOCKER.md)
 ## [Environment Replacement](/docs/ENV_REPLACE.md)
 ## [Optimise web images](/docs/OPTIMISE_FOR_WEB.md)
