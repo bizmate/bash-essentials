@@ -52,12 +52,12 @@ checkAndTrash() {
 		echo "file has something fileSize: $fileSize";
     if [[ "$fileSize" -lt 500000 ]]  && [[ "$extension" == 'mp4' ]]; then
       echo "PARTIAL Video file $filePath/$fileName is too small. Might be partial. Deleting"
-      gvfs-trash "$filePath/$fileName"
+      gio trash "$filePath/$fileName"
       return 0
     fi
 	else
 		echo "$fileName is empty, deleting and  returning 0"
-		gvfs-trash "$filePath/$fileName"
+		gio trash "$filePath/$fileName"
 		return 0
 	fi
 
@@ -111,6 +111,13 @@ checkAndTrash() {
 	then
 		if [[ $extension == "jpg" ]]  ; then checkString="Predicted"; else checkString="FPS"; fi
 		checkCount=$(grep -c $checkString "$1.log")
+		isFailed=$(grep -c Failed "$1.log")
+
+		if [[ "$isFailed" -ne "0" ]];
+    then
+      echo "broken/failed detection for file $1.log"
+      exit 1
+    fi
 
 		if [[ "$checkCount" -eq "0" ]];
 		then
@@ -121,7 +128,7 @@ checkAndTrash() {
 		if [[ "$personCount" -eq "0" ]];
 		then
 		   echo "moving $filePath/$fileName to trash";
-		   gvfs-trash "$filePath/$fileName"
+		   gio trash "$filePath/$fileName"
 		fi
 	else
 		echo "broken detection for file $1.log"
