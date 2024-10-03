@@ -27,4 +27,4 @@ date_time=$(date +%Y-%m-%d_%H-%M)
 dest=$DESTINATION_FOLDER/"$BACKUP_NAME"_$date_time.tgz
 
 ### TAR
-/usr/bin/tar -czvf "$dest" "$source"
+/usr/bin/tar czvfh "$dest" "$source"
