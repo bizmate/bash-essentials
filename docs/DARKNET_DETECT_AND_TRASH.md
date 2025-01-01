@@ -32,6 +32,7 @@ Argument is optional, if omitted it will use current working folder.
 It will create log files for the images and videos scanned so it will not scan them again a second time.
 
 ### Notes
+- *Notice* : you can remove the redundant log files after the script finished by running `removeRedundantLogFiles.sh`
 - https://github.com/AlexeyAB/darknet
 - https://github.com/daisukekobayashi/darknet-docker
 
