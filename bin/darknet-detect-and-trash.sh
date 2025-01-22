@@ -78,7 +78,7 @@ checkAndTrash() {
 
 	if [[ "$extension" == 'jpg' ]]
 	then
-		docker run --gpus all --rm -v "$DARKNET_WORKSPACE_FOLDER":/workspace -v "$YOLO_LIB_FOLDER":/yolo-lib \
+		docker run --gpus all --rm --memory="6g" -v "$DARKNET_WORKSPACE_FOLDER":/workspace -v "$YOLO_LIB_FOLDER":/yolo-lib \
 		-v "$filePath":/images -w /workspace daisukekobayashi/darknet:gpu-cv darknet detector test data/coco.data \
 		/yolo-lib/yolov3.cfg /yolo-lib/yolov3.weights  "/images/$fileName" -dont_show -ext_output > "$1.log"
 
@@ -89,7 +89,7 @@ checkAndTrash() {
       echo "Failed executing command $RESULT" >> "$1.log"
     fi
 	else
-		docker run --gpus all --rm -v "$DARKNET_WORKSPACE_FOLDER":/workspace -v "$YOLO_LIB_FOLDER":/yolo-lib \
+		docker run --gpus all --rm --memory="6g" -v "$DARKNET_WORKSPACE_FOLDER":/workspace -v "$YOLO_LIB_FOLDER":/yolo-lib \
 		-v "$filePath":/images -w /workspace daisukekobayashi/darknet:gpu-cv darknet detector demo data/coco.data \
 		/yolo-lib/yolov3.cfg /yolo-lib/yolov3.weights  "/images/$fileName" -dont_show -ext_output | awk '/Objects:/,/FPS/' \
 		> "$1.log"
